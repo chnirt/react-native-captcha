@@ -1,5 +1,5 @@
 {
-  "name": "react-native-captcha",
+  "name": "@chnirt/react-native-captcha",
   "version": "0.1.0",
   "description": "A lightweight React Native library that provides easy-to-use CAPTCHA components for user verification, including text-based CAPTCHA and drag-and-drop image CAPTCHA, with support for retries, timeouts, and customizable callbacks.",
   "source": "./src/index.tsx",
