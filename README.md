@@ -22,22 +22,29 @@ npm install @chnirt/react-native-captcha
 Here’s an example of how to use the <code>TextCaptcha</code> component in your React Native app:
 
 ```js
-import React, { useRef } from 'react';
-import { SafeAreaView, TextInput, TouchableOpacity, Text, StyleSheet, Alert } from 'react-native';
-import TextCaptcha from '@chnirt/react-native-captcha';
+import React, {useRef, useState} from 'react';
+import {
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  Alert,
+} from 'react-native';
+import {TextCaptcha} from '@chnirt/react-native-captcha';
 
 export default function App() {
   const captchaRef = useRef<any>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const validateEmail = (email: string): boolean => {
+  const validateEmail = (inputEmail: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    return emailRegex.test(inputEmail);
   };
 
-  const validatePassword = (password: string): boolean => {
-    return password.length >= 6;
+  const validatePassword = (inputPassword: string): boolean => {
+    return inputPassword.length >= 6;
   };
 
   const handleRegister = () => {
@@ -50,15 +57,15 @@ export default function App() {
     if (!validatePassword(password)) {
       Alert.alert(
         'Invalid Password',
-        'Password must be at least 6 characters.'
+        'Password must be at least 6 characters.',
       );
       return;
     }
 
     const success = captchaRef.current.verifyCaptcha();
     if (success) {
-      Alert.alert('Success', `CAPTCHA passed!`);
-      // Token hợp lệ, bạn có thể tiếp tục xử lý đăng ký.
+      Alert.alert('Success', 'CAPTCHA passed!');
+      // Token is valid, you can continue with registration.
     } else {
       Alert.alert('Failure', 'CAPTCHA validation failed.');
     }

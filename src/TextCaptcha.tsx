@@ -100,7 +100,7 @@ const TextCaptcha = forwardRef<TextCaptchaRef, TextCaptchaProps>(
             ) : (
               <Image
                 style={styles.reloadImage}
-                source={require('../assets/iconmonstr-reload-lined-240.png')}
+                source={require('./assets/iconmonstr-reload-lined-240.png')}
               />
             )}
           </TouchableOpacity>
